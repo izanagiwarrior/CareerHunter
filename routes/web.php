@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+# Landing
 Route::get('/', function () {
     return view('welcome');
 });
 
+# Auth
 Auth::routes();
 
 # User
@@ -24,7 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::get('/find', [App\Http\Controllers\HomeController::class, 'find'])->name('find');
 Route::get('/jobs', [App\Http\Controllers\HomeController::class, 'jobs'])->name('jobs');
-
 
 # Admin
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
